@@ -47,13 +47,11 @@ namespace calculater_form
             result = num1 * num2;
             operation = '*';
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             result = num1 / num2;
             operation = '/';
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             label1.Text = num1.ToString() + operation.ToString() + num2.ToString() + "=" + result.ToString();

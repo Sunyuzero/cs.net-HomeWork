@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace calculater
+namespace calculater_console
 {
     class Program
     {
@@ -17,7 +16,7 @@ namespace calculater
             num1 = double.Parse(strs[0]);
             num2 = double.Parse(strs[1]);
             Console.Write("请输入操作符：");
-            char ch = char.Parse(Console.ReadLine());      
+            char ch = char.Parse(Console.ReadLine());
             switch (ch)
             {
                 case '+':

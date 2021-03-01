@@ -1,0 +1,7 @@
+D:\c#Work\Homework1\calculater-console\calculater-console\bin\Debug\calculater-console.exe.config
+D:\c#Work\Homework1\calculater-console\calculater-console\bin\Debug\calculater-console.exe
+D:\c#Work\Homework1\calculater-console\calculater-console\bin\Debug\calculater-console.pdb
+D:\c#Work\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.csprojAssemblyReference.cache
+D:\c#Work\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.csproj.CoreCompileInputs.cache
+D:\c#Work\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.exe
+D:\c#Work\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.pdb
