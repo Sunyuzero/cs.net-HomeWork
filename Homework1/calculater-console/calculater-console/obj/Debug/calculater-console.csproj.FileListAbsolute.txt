@@ -5,3 +5,10 @@ D:\c#Work\Homework1\calculater-console\calculater-console\obj\Debug\calculater-c
 D:\c#Work\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.csproj.CoreCompileInputs.cache
 D:\c#Work\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.exe
 D:\c#Work\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.pdb
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-console\calculater-console\bin\Debug\calculater-console.exe.config
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-console\calculater-console\bin\Debug\calculater-console.exe
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-console\calculater-console\bin\Debug\calculater-console.pdb
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.csprojAssemblyReference.cache
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.csproj.CoreCompileInputs.cache
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.exe
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-console\calculater-console\obj\Debug\calculater-console.pdb

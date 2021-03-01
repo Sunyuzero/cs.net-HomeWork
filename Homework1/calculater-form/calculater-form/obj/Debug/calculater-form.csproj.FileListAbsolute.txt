@@ -8,3 +8,13 @@ D:\c#Work\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.cs
 D:\c#Work\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.csproj.CoreCompileInputs.cache
 D:\c#Work\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.exe
 D:\c#Work\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.pdb
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\bin\Debug\calculater-form.exe.config
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\bin\Debug\calculater-form.exe
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\bin\Debug\calculater-form.pdb
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.csprojAssemblyReference.cache
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\obj\Debug\calculater_form.Form1.resources
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\obj\Debug\calculater_form.Properties.Resources.resources
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.csproj.GenerateResource.cache
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.csproj.CoreCompileInputs.cache
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.exe
+C:\Users\zycjj\Desktop\cs.net-HomeWork\cs.net-HomeWork\Homework1\calculater-form\calculater-form\obj\Debug\calculater-form.pdb
