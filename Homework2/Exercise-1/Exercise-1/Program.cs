@@ -12,7 +12,7 @@ namespace Exercise_1
         {
             Console.Write("请输入一个数字: ");
             int n = int.Parse(Console.ReadLine());
-            Console.Write("{0}的所有素因数为： ",n);
+            Console.Write($"{n}的所有素因数为： ");
             for (int i = 2; i <= n; i++)
             {
                 if (n % i != 0) continue;

@@ -13,6 +13,7 @@ namespace Exercise_4
             Console.Write("请输入矩阵的行数和列数：");
             String str = Console.ReadLine();
             String[] strs = str.Split(' ');
+            Console.WriteLine("请输入矩阵：");
             try
             {
                 int row = int.Parse(strs[0]), col = int.Parse(strs[1]);

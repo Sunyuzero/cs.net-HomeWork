@@ -1,7 +1,7 @@
 ﻿using System;
 namespace ShapeTest
 {
-	internal interface Shape
+	interface Shape
 	{
 		double getArea();
 		bool islegal();
