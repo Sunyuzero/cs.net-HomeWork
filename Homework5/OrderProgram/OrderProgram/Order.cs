@@ -23,6 +23,13 @@ namespace OrderProgram
                           " Time：" + Time + " \n " +  " customer：" + customer ;
         }
 
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Order)) throw new ArgumentException();
+            Order ord = (Order)obj;
+            return this.ID == ord.ID;
+        }
         public int CompareTo(object obj)
         {
             if (!(obj is Order)) throw new System.ArgumentException();

@@ -22,11 +22,16 @@ namespace OrderProgram
             UnitTotalValue = amount * commodity.dic[unitCommodity];
         }
      
-
         public override string ToString()
         {
             return commodity.ToString()+"total：" + Amount;
         }
 
+        public override bool Equals(object obj)
+        {
+            if (!(obj is OrderDetails)) throw new ArgumentException();
+            OrderDetails ord = (OrderDetails)obj;
+            return this.UnitCommodity == ord.UnitCommodity;
+        }
     }
 }

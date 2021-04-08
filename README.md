@@ -5,3 +5,5 @@
 - <b>Homework3</b>：工厂模式
 - <b>Homework4</b>：事件机制，Lambda表达式，泛型
 - <b>Homework5</b>：订单管理系统
+- <b>Homework6</b>：序列化，测试
+- <b>Homework7</b>：控件使用
