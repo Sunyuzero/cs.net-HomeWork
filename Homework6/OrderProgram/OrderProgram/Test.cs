@@ -11,27 +11,24 @@ namespace OrderProgram
     {
         static void Main()
         {
-            OrderService service = new OrderService();
+            OrderService Service = new OrderService();
+            OrderDetails orderDetails1 = new OrderDetails("banana", 1);
+            OrderDetails orderDetails2 = new OrderDetails("banana", 2);
 
+            Customer customer1 = new Customer("C1", "banana", "A1");
+            Customer customer2 = new Customer("C2", "banana", "A2");
 
-                //创建测试订单，测试export
-                service.createOrder("TOM", "apple", 2, "Address");
-                System.Threading.Thread.Sleep(1000);
-                service.createOrder("TOM", "banana", 10, "Luoyu");
-                service.createOrder("TOM", "banana", 3, "Luoyu1");
-                service.createOrder("TOM", "banana", 8, "Luoyu2");
-                service.export();
-            
+            Order order1 = new Order(1, customer1, new DateTime(2021, 1, 1));
+            order1.Details.Add(orderDetails1);
 
-            //import测试
-            /*
-                service.printTotalOrder();
-                service.import();
-                service.printTotalOrder();
-            */
+            Order order2 = new Order(2, customer2, new DateTime(2021, 1, 2));
+            order2.Details.Add(orderDetails2);
 
+            Service.orders.Add(order1);
+            Service.orders.Add(order2);
+
+            //Service.Export("TestXML.xml");
             Console.ReadLine();
-
         }
     }
 }

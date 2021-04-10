@@ -9,23 +9,20 @@ namespace OrderProgram
 {
     public class OrderDetails
     {
-        public Commodity commodity = new Commodity();
-
-        public String UnitCommodity { get; set; }
-        public int Amount { get; set; }
-        public double UnitTotalValue { get; set; }
-
+        public OrderDetails() { }
         public OrderDetails(String unitCommodity, int amount)
         {
-            UnitCommodity = unitCommodity;
-            Amount = amount;
-            UnitTotalValue = amount * commodity.dic[unitCommodity];
+            this.UnitCommodity = unitCommodity;
+            this.Amount = amount;
         }
+        public Commodity commodity = new Commodity();
+        public String UnitCommodity { get; set; }
+        public int Amount { get; set; }
+        public double UnitTotalValue { get => Amount * commodity.dic[UnitCommodity]; }
 
-        public OrderDetails() { }
         public override string ToString()
         {
-            return commodity.ToString()+"total：" + Amount;
+            return commodity.ToString() + "total：" + Amount;
         }
 
         public override bool Equals(object obj)

@@ -2,154 +2,138 @@
 using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Diagnostics;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace OrderProgram
 {
     public class OrderService
     {
-        public List <Order> orders = new List<Order>();
-        Commodity commodities = new Commodity();
+        public List<Order> orders = new List<Order>();
+        Commodity Commodities = new Commodity();
 
-        public void createOrder(String name,String commodity,int amount,String address)
-        { 
+        public void createOrder(int id, String name, String commodity, int amount, String address)
+        {
+
             //创建客户信息
-            Customer customer = new Customer();
-            customer.Name = name;
-            customer.Address = address;
-            customer.commoditiesBought.Add(commodity);
-
-            Order order = new Order();
+            Customer customer = new Customer(name, commodity, address);
 
             //创建订单明细
             OrderDetails details = new OrderDetails(commodity, amount);
-            order.details.Add(details) ;
 
             //创建订单信息
-            order.ID = "A" + new Random(BitConverter.ToInt32(Guid.NewGuid().ToByteArray(), 0)).Next(0,10000000).ToString();
-            order.customer = customer;
-            order.TotalValue += details.UnitTotalValue;
-            order.Time = DateTime.Now.ToString();
+            Order order = new Order(id, customer, DateTime.Now);
+            order.addDetails(details);
+
+            if (searchOrder(id.ToString()) != null) throw new OrderException("订单已经存在", 6);
+
             orders.Add(order);
 
-            Console.WriteLine("订单创建成功:\n" + order.ToString() + "\n");
-
+            Console.WriteLine("订单创建成功");
         }
 
         public void deleteOrder(String info)
         {
-            if (!searchOrder(info)) throw new OrderException("删除订单失败，查找不到此订单", 0);
+            if (searchOrder(info) != null) throw new OrderException("删除订单失败，查找不到此订单", 0);
 
             for (int i = 0; i < orders.Count(); i++)
             {
-                if (orders[i].customer.Name == info ||
+                if (orders[i].Customer.Name == info ||
                         orders[i].TotalValue.ToString() == info ||
-                        orders[i].ID == info)
+                        orders[i].ID.ToString() == info)
                 {
                     orders.Remove(orders[i--]);
                 }
             }
 
-            Console.WriteLine("删除成功，现在所有的订单为：");
-            printTotalOrder();
-
+            Console.WriteLine("删除成功");
         }
 
-        public void modifyOrder(String ID)
+        public void modifyOrder(String ID, String name, String commodities, int amount, String address, DateTime date)
         {
-            if (!searchOrder(ID)) throw new OrderException("修改订单失败，查不到此订单", 1);
-
-            Console.WriteLine("请修改订单：");
-
-            Console.Write("totalValue："); 
-            double newValue = double.Parse(Console.ReadLine());
-            if (newValue < 0) throw new OrderException("修改失败，金额不能小于0", 2);
-
-            Console.Write("name："); 
-            String newName = Console.ReadLine();
-
-            Console.Write("buy："); 
-            String commodity = Console.ReadLine();
-            if (!commodities.dic.ContainsKey(commodity)) throw new OrderException("修改失败，没有此商品",4);
+            if (searchOrder(ID) != null) throw new OrderException("修改订单失败，查不到此订单", 1);
+            if (amount < 0) throw new OrderException("修改失败，金额不能小于0", 2);
+            if (!Commodities.dic.ContainsKey(commodities)) throw new OrderException("修改失败,不存在该商品", 5);
 
             foreach (Order order in orders)
             {
-                if (order.ID == ID)
+                if (order.ID.ToString() == ID)
                 {
-                    order.TotalValue = newValue;
-                    order.customer.Name = newName;
-                    order.customer.commoditiesBought.Clear();
-                    order.customer.commoditiesBought.Add(commodity);
-                    order.Time = DateTime.Now.ToString();
-                    Console.WriteLine("修改成功，订单为：\n" + order);
+                    order.Customer.Name = name;
+                    order.Customer.CommoditiesBought = commodities;
+                    OrderDetails detail = new OrderDetails(commodities, amount);
+                    order.Details.Clear();
+                    order.Details.Add(detail);
+                    order.Time = date;
+                    Console.WriteLine("修改成功");
                 }
             }
         }
 
-        public bool searchOrder(String info)
-        { 
+        public List<Order> searchOrder(String info)
+        {
             IEnumerable<Order> query = null;
 
             query = from s in orders
-                    from q in s.customer.commoditiesBought
-                    where q == info || s.customer.Name == info || s.TotalValue.ToString() == info || s.ID == info
+                    where s.Customer.Address == info || s.Customer.Name == info ||
+                            s.TotalValue.ToString() == info || s.ID.ToString() == info ||
+                                s.Customer.CommoditiesBought == info
                     orderby s.TotalValue ascending
                     select s;
 
-            if(query.Count() == 0)
+            if (query.Count() == 0)
             {
                 Console.WriteLine("无此订单");
-                return false;
+                return null;
             }
 
             int i = 1;
+            List<Order> orderlist = new List<Order>();
             foreach (Order order in query)
             {
+                orderlist.Add(order);
                 Console.WriteLine($"订单{i++}");
                 Console.WriteLine(order.ToString() + "\n");
             }
-
-            return true;
+            return orderlist;
         }
 
         public void printTotalOrder()
         {
-            if(orders.Count  == 0)
-            {
-                Console.WriteLine("没有订单\n");
-                return;
-            }
             Console.WriteLine("所有的订单如下：");
             int i = 1;
-            foreach(Order order in orders)
+            foreach (Order order in orders)
             {
                 Console.WriteLine($"订单{i++}");
                 Console.WriteLine(order.ToString() + "\n");
             }
         }
 
-             
-        public void export()
+        public void Export(String path)
         {
             XmlSerializer serializer = new XmlSerializer(orders.GetType());
-            using (FileStream fs = new FileStream("order.xml", FileMode.Create, FileAccess.Write))
+            using (FileStream fs = new FileStream(path, FileMode.Create))
             {
                 serializer.Serialize(fs, orders);
+                
             }
-
+            
         }
-
-        public void import()
+        public void import(String path)
         {
             XmlSerializer serializer = new XmlSerializer(orders.GetType());
-            using (FileStream fs = new FileStream("order.xml", FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(path, FileMode.Open))
             {
-                List<Order> lists = (List<Order>)serializer.Deserialize(fs);
-                lists.ForEach( (ord) => orders.Add(ord) );
+                List<Order> temp = (List<Order>)serializer.Deserialize(fs);
+                temp.ForEach(ord =>
+                {
+                    if (!orders.Contains(ord)) orders.Add(ord);
+                });
             }
         }
 
     }
+
+
 }

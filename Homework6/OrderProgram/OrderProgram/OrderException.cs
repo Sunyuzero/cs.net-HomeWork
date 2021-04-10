@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrderProgram
 {
-    class OrderException:Exception
+    public class OrderException:Exception
     {
         private int code;
         public OrderException(String message,int code):base(message)

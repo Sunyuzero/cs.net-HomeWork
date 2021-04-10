@@ -10,17 +10,28 @@ namespace OrderProgram
 {
     public class Order : IComparable
     {
-        public String ID { get; set; }
-        public Customer customer { get; set; }
-        public String Time { get; set; }
+        public Order() { }
+        public Order(int id, Customer customer, DateTime date)
+        {
+            this.ID = id;
+            this.Customer = customer;
+            this.Time = date;
+        }
+        public int ID { get; set; }
+        public Customer Customer { get; set; }
+        public DateTime Time { get; set; }
         public double TotalValue { get; set; }
 
-        public List <OrderDetails> details = new List<OrderDetails>() ;
+        public List<OrderDetails> Details = new List<OrderDetails>();
+        public void addDetails(OrderDetails details)
+        {
+            Details.Add(details);
+        }
 
-        public override string ToString() 
+        public override string ToString()
         {
             return "  ID：" + ID + " \n " + " TotalValue：" + TotalValue + "  \n " +
-                          " Time：" + Time + " \n " +  " customer：" + customer ;
+                          " Time：" + Time.ToString() + " \n " + " customer：" + Customer;
         }
 
 
@@ -36,11 +47,11 @@ namespace OrderProgram
             Order ord = (Order)obj;
             return this.ID.CompareTo(ord.ID);
         }
-
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
+
 
     }
 }

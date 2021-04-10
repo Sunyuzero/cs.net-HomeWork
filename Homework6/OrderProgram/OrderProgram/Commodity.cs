@@ -12,7 +12,7 @@ namespace OrderProgram
     public class Commodity
     {
         public SerializableDictionary<string, int> dic = new SerializableDictionary<string, int>();
-        
+
         public Commodity()
         {
             dic.Add("apple", 5);
@@ -21,7 +21,7 @@ namespace OrderProgram
         public override string ToString()
         {
             String str = "";
-            foreach(String Key in dic.Keys)
+            foreach (String Key in dic.Keys)
             {
                 str += "[ " + Key + "：" + dic[Key] + " ]\n";
             }
